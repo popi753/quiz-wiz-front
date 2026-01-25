@@ -1,6 +1,6 @@
 import { forwardRef, useImperativeHandle, useRef, useCallback } from "react";
-import { Link } from "react-router";
-import {AuthBtn} from "./index";
+import { Link, useNavigate } from "react-router";
+import { PrimaryBtn } from "@/components";
 import { Logo, Close } from "@/components/icons";
 
 const BurgeMenuModal = forwardRef<HTMLDialogElement>((_props, ref) => {
@@ -14,6 +14,8 @@ const BurgeMenuModal = forwardRef<HTMLDialogElement>((_props, ref) => {
             dialog.current?.close();
         }
     }, [dialog]);
+
+    const navigate = useNavigate();
 
     return (
         <dialog ref={dialog} onClick={handleBackdropClick} className="box-content w-full h-fit px-6 bg-white border-2 border-gray-300 sm:hidden backdrop:backdrop-blur-sm">
@@ -32,9 +34,12 @@ const BurgeMenuModal = forwardRef<HTMLDialogElement>((_props, ref) => {
                     </Link>
                 </div>
                 <div className="w-full flex flex-col gap-6">
-                    <AuthBtn text="Sign Up" btnType="dark" btnClasses="w-full" link="/register" />
-                    <AuthBtn text="Log in" btnType="light" btnClasses="w-full" link="/login" />
-
+                    <PrimaryBtn btnType="dark" className="w-full h-10" type="button" onClick={() => navigate("/register")}>
+                        Sign up
+                    </PrimaryBtn>
+                    <PrimaryBtn btnType="light" className="w-full h-10" type="button" onClick={() => navigate("/login")}>
+                        Login
+                    </PrimaryBtn>
                 </div>
 
             </div>

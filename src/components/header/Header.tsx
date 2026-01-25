@@ -1,11 +1,13 @@
 import { useRef } from "react";
-import { Link } from "react-router";
-import { AuthBtn, BurgerMenuModal } from "./index";
+import { Link, useNavigate } from "react-router";
+import { BurgerMenuModal } from "./index";
+import { PrimaryBtn } from "@/components";
 import { Logo, BurgerMenu } from "@/components/icons";
 
 export default function Header() {
 
     const dialogRef = useRef<HTMLDialogElement>(null);
+    const navigate = useNavigate();
 
     return (
         <header className="w-full h-auto flex flex-row justify-between items-center px-20 p-4 border-b border-gray-300 max-sm:px-6">
@@ -24,8 +26,13 @@ export default function Header() {
             <BurgerMenuModal ref={dialogRef} />
 
             <div className="flex flex-row justify-between items-center gap-2 font-raleway max-sm:hidden">
-                <AuthBtn text="Sign Up" btnType="dark" btnClasses="w-25" link="/register" />
-                <AuthBtn text="Log in" btnType="light" btnClasses="w-25" link="/login" />
+                <PrimaryBtn btnType="dark" className="w-25 h-10" type="button" onClick={() => navigate("/register")}>
+                    Sign up
+                </PrimaryBtn>
+                <PrimaryBtn btnType="light" className="w-25 h-10" type="button" onClick={() => navigate("/login")}>
+                    Login
+                </PrimaryBtn>
+
             </div>
         </header>
     );
