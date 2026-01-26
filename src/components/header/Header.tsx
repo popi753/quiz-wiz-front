@@ -1,7 +1,7 @@
-import { useRef } from "react";
+import { useCallback, useRef } from "react";
 import { Link, useNavigate } from "react-router";
 import { BurgerMenuModal } from "./index";
-import { PrimaryBtn } from "@/components";
+import { PrimaryButton } from "@/components";
 import { Logo, BurgerMenu } from "@/components/icons";
 
 export default function Header() {
@@ -26,12 +26,12 @@ export default function Header() {
             <BurgerMenuModal ref={dialogRef} />
 
             <div className="flex flex-row justify-between items-center gap-2 font-raleway max-sm:hidden">
-                <PrimaryBtn btnType="dark" className="w-25 h-10" type="button" onClick={() => navigate("/register")}>
+                <PrimaryButton btnType="dark" className="w-25 h-10" type="button" onClick={() => navigate("/register")}>
                     Sign up
-                </PrimaryBtn>
-                <PrimaryBtn btnType="light" className="w-25 h-10" type="button" onClick={() => navigate("/login")}>
+                </PrimaryButton>
+                <PrimaryButton btnType="light" className="w-25 h-10" type="button" onClick={() => navigate("/login")}>
                     Login
-                </PrimaryBtn>
+                </PrimaryButton>
 
             </div>
         </header>
