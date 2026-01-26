@@ -8,7 +8,10 @@ const BurgeMenuModal = forwardRef<HTMLDialogElement>((_props, ref) => {
     const dialog = useRef<HTMLDialogElement>(null);
 
     useImperativeHandle(ref, () => {
-        return dialog.current!;
+        if (!dialog.current) {
+            throw new Error("Dialog ref is not assigned");
+        }
+        return dialog.current;
     });
 
     const handleBackdropClick = useCallback((e: React.MouseEvent<HTMLDialogElement>) => {
