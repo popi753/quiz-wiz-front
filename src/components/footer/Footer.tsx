@@ -1,10 +1,10 @@
 import { Link } from "react-router";
 import { useQuery } from "@tanstack/react-query";
 
-import fetchFooterData from "@/services/footer";
+import { fetchFooterData } from "@/services";
 
 import FooterList from "./FooterList";
-import { Logo } from "../icons";
+import { Logo } from "@/components/icons";
 
 export default function Footer() {
     const { data, isLoading } = useQuery({
@@ -22,14 +22,14 @@ export default function Footer() {
                 <FooterList headerText="Content" items={[{ text: "Quizzes", link: "/quizzes", blank: false }]} />
 
                 {isLoading ? <p>Loading...</p>
-                    : data ? data.map((item, index) => (
+                    : data?.map((item, index) => (
                         <FooterList
                             key={index}
                             headerText={item.headerText}
                             items={item.items}
                         />
                     ))
-                        : null
+                        
                 }
             </div>
 
