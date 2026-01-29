@@ -1,5 +1,5 @@
 import apiAxiosInstance from './apiAxiosInstance';
-import { type  FooterListProps } from '../components/footer';
+import { type FooterListProps } from '@/components/footer';
 
 export default async function fetchFooterData(): Promise<FooterListProps[]> {
     try {

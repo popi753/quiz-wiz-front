@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchFooterData } from "@/services";
 
 import FooterList from "./FooterList";
-import { Logo } from "@/components/icons";
+import { Logo } from "@/components";
 
 export default function Footer() {
     const { data, isLoading } = useQuery({
@@ -29,7 +29,6 @@ export default function Footer() {
                             items={item.items}
                         />
                     ))
-                        
                 }
             </div>
 
