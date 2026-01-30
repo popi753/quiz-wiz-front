@@ -1,3 +1,9 @@
 export { default as Logo } from './Logo';
 export { default as BurgerMenu } from './BurgerMenu';
 export { default as Close } from './Close';
+export { default as LargeLogo } from './LargeLogo';
+export { default as GirlReadingIcon } from './GirlReadingIcon';
+export { default as ArrowUpRight } from './ArrowUpRight';
+export { default as BackArrow } from './BackArrow';
+export { default as Error404Icon } from './Error404Icon';
+export { default as Error500Icon } from './Error500Icon';
