@@ -45,7 +45,6 @@ body {
 
   span,
   p {
-    letter-spacing: 1px;
     vertical-align: middle;
   }
 
@@ -67,4 +66,33 @@ body {
 
 button {
   cursor: pointer;
+}
+.loader{
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+}
+.loader:after {
+  content: " ";
+  display: block;
+  width: clamp(40px, 80%, 200px);
+  aspect-ratio: 1/1;
+  margin: auto;
+  border-radius: 50%;
+  border: 10px solid #01d099;
+  border-color: #01d099 transparent #01d099 transparent;
+  animation: wg_dual_ring 1.2s linear infinite;
+}
+
+@keyframes wg_dual_ring {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }

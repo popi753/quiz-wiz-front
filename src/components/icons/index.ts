@@ -7,3 +7,6 @@ export { default as ArrowUpRight } from './ArrowUpRight';
 export { default as BackArrow } from './BackArrow';
 export { default as Error404Icon } from './Error404Icon';
 export { default as Error500Icon } from './Error500Icon';
+export { default as CheckCircle } from './CheckCircle';
+export { default as WarningCircle } from './WarningCircle';
+export { default as ErrorCircle } from './ErrorCircle';
