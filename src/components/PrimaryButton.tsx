@@ -8,7 +8,7 @@ type PrimaryButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
 export default function PrimaryButton({ btnType, children, ...props }: PrimaryButtonProps) {
     return (
         <button {...props}
-            className={cn("hover:scale-110 rounded-sm py-3.5 flex justify-center items-center",
+            className={cn("hover:scale-110 rounded-sm py-3.5 flex justify-center items-center disabled:cursor-wait! disabled:opacity-50 disabled:hover:scale-100",
                 props.className,
                 {
                     "bg-black text-white": btnType === "dark",
@@ -19,5 +19,4 @@ export default function PrimaryButton({ btnType, children, ...props }: PrimaryBu
             </span>
         </button>
     );
-
-}
+};

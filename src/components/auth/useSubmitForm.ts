@@ -33,22 +33,21 @@ export default function useSubmitForm(setError: UseFormSetError<RegisterFormData
                     userContext.handleSetUser(data);
                 },
                 onError: (error) => {
-                    if (error instanceof AxiosError) {
-                        if (error.response?.status === 500 || !(error.response?.status)) {
-                            toast('error', {
-                                header: 'error',
-                                message: 'An unexpected error occurred. please try again later',
-                            });
-                        } else {
-                            const apiErrors = error.response?.data?.errors;
-                            if (apiErrors) {
-                                for (const field in apiErrors) {
-                                    setError(field as keyof RegisterFormData, {
-                                        message: apiErrors[field][0],
-                                    });
-                                }
-                            }
-                        }
+                    if (!(error instanceof AxiosError) || error.response?.status === 500 || !error.response?.status) {
+                        toast('error', {
+                            header: 'error',
+                            message: 'An unexpected error occurred. please try again later',
+                        });
+                        return;
+                    };
+                    const apiErrors = error.response?.data?.errors;
+
+                    if (!apiErrors) return;
+
+                    for (const field in apiErrors) {
+                        setError(field as keyof RegisterFormData, {
+                            message: apiErrors[field][0],
+                        });
                     }
                 },
             });

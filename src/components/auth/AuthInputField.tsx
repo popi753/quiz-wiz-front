@@ -6,7 +6,7 @@ export default function AuthInputField({ id, label, required, error, register, .
     return (
         <>
             <div className="relative flex flex-1 flex-col gap-2">
-                <label htmlFor={id} className='text-[14px] leading-[125%] text-gray-700 tracking-normal'>
+                <label htmlFor={id} className='text-sm leading-[125%] text-gray-700 tracking-normal'>
                     {label}
                 </label>
                 <input
@@ -23,9 +23,9 @@ export default function AuthInputField({ id, label, required, error, register, .
                     className={`flex-1 h-10 p-4 border border-gray-300 rounded-lg focus:outline-3 focus:outline-purple ${error ? 'border-orange' : ''}`}
                 />
 
-                {error ? <AlertCircle className='absolute right-[3%] top-[50%] -translate-y-1/2' /> :
-                    props.type === "password" ? <Eye className='absolute right-[3%] top-[45%]' onClick={changeVisibility} /> : null}
-                <span className="block h-5 text-[14px] text-orange leading-5 font-normal tracking-normal">{error || " "}</span>
+                {error ? <AlertCircle className='absolute right-[3%] top-1/2 -translate-y-1/2' /> :
+                    props.type === "password" ? <Eye className='absolute right-[3%] top-1/2 -translate-y-1/2' onClick={changeVisibility} /> : null}
+                <span className="block h-5 text-sm text-orange leading-5 font-normal tracking-normal">{error || " "}</span>
             </div>
         </>
     );

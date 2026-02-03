@@ -1,5 +1,6 @@
 import { Link, useNavigate } from 'react-router';
 import { Logo, ChevronLeft } from '@/components';
+import { cn } from '@/helpers/utils';
 
 export default function Auth({ children, bgImageUrl }: { children: React.ReactNode, bgImageUrl: string }) {
 
@@ -7,7 +8,7 @@ export default function Auth({ children, bgImageUrl }: { children: React.ReactNo
 
     return (
         <div className="flex-1 w-full h-full flex flex-row">
-            <div className={`flex-1 ${bgImageUrl} bg-no-repeat bg-cover p-10 max-sm:hidden`}>
+            <div className={cn("flex-1 bg-no-repeat bg-cover p-10 max-sm:hidden",  bgImageUrl )}>
                 <Link to="/">
                     <Logo />
                 </Link>
