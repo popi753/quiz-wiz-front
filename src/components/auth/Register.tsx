@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { PrimaryButton } from '@/components';
 import { AuthInputField, useSubmitForm, type RegisterFormData, AuthSwitch } from './index';
+import { onRegister } from '@/services';
 
 export default function Register() {
   const {
@@ -19,7 +20,7 @@ export default function Register() {
     },
   });
 
-  const { isPending, onSubmit } = useSubmitForm(setError);
+  const { isPending, onSubmit } = useSubmitForm(setError, onRegister);
 
   return (
     <>
@@ -88,12 +89,12 @@ export default function Register() {
               />
               <label
                 htmlFor="terms"
-                className="text-[14px] text-gray-700 leading-[125%] tracking-normal"
+                className="text-sm text-gray-700 leading-[125%] tracking-normal"
               >
                 I accept the terms and privacy policy
               </label>
             </div>
-            <span className="block h-5 text-[14px] text-orange leading-5 font-normal tracking-normal">
+            <span className="block h-5 text-sm text-orange leading-5 font-normal tracking-normal">
               {errors.terms?.message || ''}
             </span>
           </div>

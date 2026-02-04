@@ -8,6 +8,12 @@ export type RegisterFormData = {
   terms: boolean;
 };
 
+export type LoginFormData = {
+  email: string,
+  password: string,
+  remember: boolean,
+};
+
 export type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   id: string
   label: string;
