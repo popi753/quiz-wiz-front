@@ -1,6 +1,7 @@
-import { useToast } from "@/contexts";
+import { useToast, type UserContextType } from "@/contexts";
 import { AxiosError } from "axios";
-import type { UseFormSetError } from "react-hook-form";
+import type { Path, UseFormSetError } from "react-hook-form";
+import type { LoginFormData, RegisterFormData } from "./types";
 
 export const changeVisibility = (e: React.MouseEvent<HTMLOrSVGElement, MouseEvent>) => {
     const input = (e.currentTarget as HTMLElement).previousElementSibling as HTMLInputElement;
@@ -11,12 +12,12 @@ export const changeVisibility = (e: React.MouseEvent<HTMLOrSVGElement, MouseEven
     };
 };
 
-export const handleLoginSuccess = (user : { username: string, email: string }, handleSetUser: (user: { username: string, email: string }) => void, navigate : (path: string) => void) => {
+export const handleLoginSuccess = (user: UserContextType['user'], handleSetUser: UserContextType['handleSetUser'], navigate: (path: string) => void) => {
     handleSetUser(user);
     navigate("/quizlisting");
 };
 
-export function handleErrorResponse<GenericFormDataType extends object>(error: unknown, toast: ReturnType<typeof useToast>, setError: UseFormSetError<GenericFormDataType>) {
+export function handleErrorResponse<GenericFormDataType extends RegisterFormData | LoginFormData>(error: unknown, toast: ReturnType<typeof useToast>, setError: UseFormSetError<GenericFormDataType>) {
     if (!(error instanceof AxiosError) || error.response?.status === 500 || !error.response?.status || !(error.response?.data?.errors)) {
         toast('error', {
             header: 'error',
@@ -28,7 +29,7 @@ export function handleErrorResponse<GenericFormDataType extends object>(error: u
     const apiErrors = error.response?.data?.errors;
 
     for (const field in apiErrors) {
-        setError(field as any, {
+        setError(field as Path<GenericFormDataType>, {
             message: apiErrors[field][0],
         });
     };

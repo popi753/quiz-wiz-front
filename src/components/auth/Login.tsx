@@ -16,13 +16,13 @@ export default function Login() {
         if (verify === "0") {
             toast("warning", {
                 header: "Token Expired",
-                message: "emial verification token expired. please try again.",
+                message: "Email verification token expired. please try again.",
             });
         }
         else if (verify === "1") {
             toast("success", {
                 header: "Email Verified",
-                message: "continue authorization.",
+                message: "Continue authorization.",
             });
         }
         else if (verify === "2") {
@@ -48,7 +48,7 @@ export default function Login() {
         }
     });
 
-    const { isPending, onSubmit } = useSubmitForm(setError, onLogin);
+    const { isPending, onSubmit } = useSubmitForm({ setError, onAuthFunc: onLogin, type: 'login' });
 
     return (
         <>

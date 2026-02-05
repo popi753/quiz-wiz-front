@@ -3,23 +3,30 @@ import { useNavigate } from "react-router";
 import { useMutation } from "@tanstack/react-query";
 import type { UseFormSetError } from "react-hook-form";
 import { UserContext, useToast } from "@/contexts";
+import type { onLoginResponseType, onRegisterResponseType } from "@/services";
 import type { LoginFormData, RegisterFormData } from "./types";
 import { handleErrorResponse, handleLoginSuccess } from "./helpers";
 
-export default function useSubmitForm<GenericFormDataType extends RegisterFormData | LoginFormData>(setError: UseFormSetError<GenericFormDataType>, onAuthFunc: (data: GenericFormDataType) => Promise<any>) {
+type UseSubmitFormProps =
+    | { setError: UseFormSetError<RegisterFormData>; onAuthFunc: (data: RegisterFormData) => Promise<onRegisterResponseType>; type: 'register'; }
+    | { setError: UseFormSetError<LoginFormData>; onAuthFunc: (data: LoginFormData) => Promise<onLoginResponseType>; type: 'login'; };
+
+
+export default function useSubmitForm(props: UseSubmitFormProps) {
+    const { setError, onAuthFunc, type } = props;
     const toast = useToast();
     const navigate = useNavigate();
     const { mutate, isPending } = useMutation({
-        mutationFn: (data: GenericFormDataType) => onAuthFunc(data),
+        mutationFn: onAuthFunc as (data: RegisterFormData | LoginFormData) => Promise<onRegisterResponseType | onLoginResponseType>,
     });
 
     const { handleSetUser } = useContext(UserContext) || [];
 
     const onSubmit = useCallback(
-        (data: GenericFormDataType) => {
+        (data: RegisterFormData | LoginFormData) => {
 
-            if ("password_confirmation" in data && data.password !== data.password_confirmation) {
-                setError('password_confirmation' as any, {
+            if (type === "register" && data.password !== (data as RegisterFormData).password_confirmation) {
+                setError('password_confirmation', {
                     message: 'passwords do not match',
                 });
                 return;
@@ -27,17 +34,22 @@ export default function useSubmitForm<GenericFormDataType extends RegisterFormDa
 
             mutate(data, {
                 onSuccess: (data) => {
-                    if ('password_confirmation' in data) {
+                    if (type === "register") {
                         toast('success', {
                             header: 'Registration Successful',
                             message: 'Check your email for verification instructions.',
                         });
-                    } else {
-                        handleLoginSuccess(data.user, handleSetUser, navigate);
+                    }
+                    if (type === "login") {
+                        handleLoginSuccess((data as onLoginResponseType).user, handleSetUser, navigate);
                     }
                 },
                 onError: (error) => {
-                    handleErrorResponse(error, toast, setError);
+                    if (type === "register") {
+                        handleErrorResponse(error, toast, setError);
+                    } else if (type === "login") {
+                        handleErrorResponse(error, toast, setError);
+                    }
                 },
             });
         },

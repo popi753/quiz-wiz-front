@@ -20,7 +20,7 @@ export default function Register() {
     },
   });
 
-  const { isPending, onSubmit } = useSubmitForm(setError, onRegister);
+  const { isPending, onSubmit } = useSubmitForm({ setError, onAuthFunc: onRegister, type: 'register' });
 
   return (
     <>
