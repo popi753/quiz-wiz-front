@@ -1,7 +1,6 @@
 import { useToast } from "@/contexts";
 import { AxiosError } from "axios";
 import type { UseFormSetError } from "react-hook-form";
-import { useNavigate } from "react-router";
 
 export const changeVisibility = (e: React.MouseEvent<HTMLOrSVGElement, MouseEvent>) => {
     const input = (e.currentTarget as HTMLElement).previousElementSibling as HTMLInputElement;
@@ -12,11 +11,8 @@ export const changeVisibility = (e: React.MouseEvent<HTMLOrSVGElement, MouseEven
     };
 };
 
-export const handleLoginSuccess = <GenericDateType extends object>(data: GenericDateType, handleSetUser: (data: GenericDateType) => void) => {
-    const navigate = useNavigate();
-    if ("user" in data) {
-        handleSetUser(data.user as GenericDateType);
-    }
+export const handleLoginSuccess = (user : { username: string, email: string }, handleSetUser: (user: { username: string, email: string }) => void, navigate : (path: string) => void) => {
+    handleSetUser(user);
     navigate("/quizlisting");
 };
 

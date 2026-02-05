@@ -1,4 +1,5 @@
 import { useCallback, useContext } from "react";
+import { useNavigate } from "react-router";
 import { useMutation } from "@tanstack/react-query";
 import type { UseFormSetError } from "react-hook-form";
 import { UserContext, useToast } from "@/contexts";
@@ -7,6 +8,7 @@ import { handleErrorResponse, handleLoginSuccess } from "./helpers";
 
 export default function useSubmitForm<GenericFormDataType extends RegisterFormData | LoginFormData>(setError: UseFormSetError<GenericFormDataType>, onAuthFunc: (data: GenericFormDataType) => Promise<any>) {
     const toast = useToast();
+    const navigate = useNavigate();
     const { mutate, isPending } = useMutation({
         mutationFn: (data: GenericFormDataType) => onAuthFunc(data),
     });
@@ -31,7 +33,7 @@ export default function useSubmitForm<GenericFormDataType extends RegisterFormDa
                             message: 'Check your email for verification instructions.',
                         });
                     } else {
-                        handleLoginSuccess(data, handleSetUser);
+                        handleLoginSuccess(data.user, handleSetUser, navigate);
                     }
                 },
                 onError: (error) => {

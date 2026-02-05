@@ -15,7 +15,7 @@ export default function Login() {
         const verify = searchParams.get("verify");
         if (verify === "0") {
             toast("warning", {
-                header: "TOken Expired",
+                header: "Token Expired",
                 message: "emial verification token expired. please try again.",
             });
         }
@@ -37,14 +37,14 @@ export default function Login() {
                 message: "The email verification link is invalid or has expired. try again.",
             });
         }
-    }, []);
+    }, [searchParams]);
 
     const { register, setError, handleSubmit, formState: { errors } } = useForm<LoginFormData>({
         mode: 'all',
         defaultValues: {
-            email: 'test@gmail.com',
-            password: 'pass',
-            remember: true,
+            email: '',
+            password: '',
+            remember: false,
         }
     });
 
