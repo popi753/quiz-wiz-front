@@ -1,6 +1,6 @@
 import { createContext, useState, type ReactNode } from 'react';
 
-type UserContextType = {
+export type UserContextType = {
     user: { username: string, email: string },
     handleSetUser: (user: { username: string, email: string }) => void,
 }
