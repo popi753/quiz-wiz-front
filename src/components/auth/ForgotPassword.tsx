@@ -1,42 +1,22 @@
-import { useCallback } from "react";
 import { useForm } from "react-hook-form";
-import { useMutation } from "@tanstack/react-query";
 import { PrimaryButton } from "@/components";
-import { AuthInputField, handleErrorResponse } from "./index";
-import { useToast } from "@/contexts";
-import { onForgetPassword } from "@/services";
+import { AuthInputField, useSubmitForm, type ForgotPasswordFormData } from "./index";
+import { onForgotPassword } from "@/services";
 
-export default function ForgetPassword() {
-    const toast = useToast();
-    const { register, setError, handleSubmit, formState: { errors } } = useForm({
+export default function ForgotPassword() {
+    const { register, setError, handleSubmit, formState: { errors } } = useForm<ForgotPasswordFormData>({
         mode: 'all',
         defaultValues: {
             email: '',
         }
     });
 
-    const { mutate, isPending } = useMutation({
-        mutationFn: (email: string) => onForgetPassword(email),
-    });
-
-    const onSubmit = useCallback((formData: { email: string }) => {
-        mutate(formData.email, {
-            onSuccess: (data) => {
-                toast('success', {
-                    header: 'Verification Successful',
-                    message: data.status,
-                });
-            },
-            onError: (error) => {
-                handleErrorResponse(error, toast, setError)
-            }
-        });
-    }, [])
+    const { isPending, onSubmit } = useSubmitForm({ setError, onAuthFunc: onForgotPassword, type: 'forgot-password' });
 
     return (
         <>
             <span className="font-Raleway font-extrabold text-3xl leading-[130%] tracking-[-1px]!">
-                Forget Password?
+                Forgot Password?
             </span>
             <span className="text-sm leading-[165%] text-gray-600">
                 Don’t worry! It happens. Please enter the email associated with your account.

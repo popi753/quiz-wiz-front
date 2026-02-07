@@ -14,6 +14,15 @@ export type LoginFormData = {
   remember: boolean,
 };
 
+export type ForgotPasswordFormData = {
+  email: string,
+};
+
+export type ResetPasswordFormData = {
+  password: string,
+  password_confirmation: string,
+};
+
 export type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   id: string
   label: string;
