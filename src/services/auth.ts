@@ -1,7 +1,6 @@
 import instance from "./apiAxiosInstance";
 import type { UserContextType } from "@/contexts";
-import instance from "./apiAxiosInstance";
-import type { RegisterFormData, LoginFormData } from "@/components/auth";
+import type { RegisterFormData, LoginFormData, ForgotPasswordFormData, ResetPasswordFormData } from "@/components/auth";
 
 export type onRegisterResponseType = {
         success: boolean,
@@ -31,14 +30,28 @@ export async function onLogin(data: LoginFormData): Promise<onLoginResponseType>
         }
 };
 
-type onForgetPasswordResponseType = {
+type onForgotPasswordResponseType = {
         success: boolean,
         status: string,
 }
 
-export async function onForgetPassword(email: string): Promise<onForgetPasswordResponseType> {
+export async function onForgotPassword(data: ForgotPasswordFormData): Promise<onForgotPasswordResponseType> {
         try {
-                const response = await instance.post('/forgot-password', { email });
+                const response = await instance.post('/forgot-password', data);
+                return response.data;
+        } catch (error: unknown) {
+                throw error;
+        }
+};
+
+export type onResetPasswordResponseType = {
+        success: boolean,
+        status: string,
+}
+
+export async function onResetPassword(data: ResetPasswordFormData): Promise<onResetPasswordResponseType> {
+        try {
+                const response = await instance.post('/reset-password', data);
                 return response.data;
         } catch (error: unknown) {
                 throw error;

@@ -1,7 +1,7 @@
 import { useToast, type UserContextType } from "@/contexts";
 import { AxiosError } from "axios";
 import type { Path, UseFormSetError } from "react-hook-form";
-import type { LoginFormData, RegisterFormData } from "./types";
+import type { ForgotPasswordFormData, LoginFormData, RegisterFormData, ResetPasswordFormData } from "./types";
 
 export const changeVisibility = (e: React.MouseEvent<HTMLOrSVGElement, MouseEvent>) => {
     const input = (e.currentTarget as HTMLElement).previousElementSibling as HTMLInputElement;
@@ -12,12 +12,7 @@ export const changeVisibility = (e: React.MouseEvent<HTMLOrSVGElement, MouseEven
     };
 };
 
-export const handleLoginSuccess = (user: UserContextType['user'], handleSetUser: UserContextType['handleSetUser'], navigate: (path: string) => void) => {
-    handleSetUser(user);
-    navigate("/quizlisting");
-};
-
-export function handleErrorResponse<GenericFormDataType extends RegisterFormData | LoginFormData>(error: unknown, toast: ReturnType<typeof useToast>, setError: UseFormSetError<GenericFormDataType>) {
+export function handleErrorResponse<GenericFormDataType extends RegisterFormData | LoginFormData | ForgotPasswordFormData | ResetPasswordFormData>(error: unknown, toast: ReturnType<typeof useToast>, setError: UseFormSetError<GenericFormDataType>) {
     if (!(error instanceof AxiosError) || error.response?.status === 500 || !error.response?.status || !(error.response?.data?.errors)) {
         toast('error', {
             header: 'error',

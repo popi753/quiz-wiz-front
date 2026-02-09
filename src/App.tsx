@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router";
-import { Error404Icon, ErrorPage, ForgetPassword, Layout, Login, Register } from "@/components";
+import { Error404Icon, ErrorPage, ForgotPassword, Layout, Login, Register, ResetPassword } from "@/components";
 import { Auth, LandingPage } from "@/routes";
 
 function App() {
@@ -7,7 +7,9 @@ function App() {
         <Routes>
             <Route path="/register" element={<Auth children={<Register />} bgImageUrl="bg-[url('@/assets/register-bg.png')]" />} />
             <Route path="/login" element={<Auth children={<Login />} bgImageUrl="bg-[url('@/assets/login-bg.png')]" />} />
-            <Route path="/forgetpassword" element={<Auth children={<ForgetPassword />} bgImageUrl="bg-[url('@/assets/resetpassword-bg.png')]" />} />
+            <Route path="/forgotpassword" element={<Auth children={<ForgotPassword />} bgImageUrl="bg-[url('@/assets/resetpassword-bg.png')]" />} />
+            <Route path="/resetpassword" element={<Auth children={<ResetPassword />} bgImageUrl="bg-[url('@/assets/resetpassword-bg.png')]"/>} />
+            
 
 
             <Route path="/" element={<Layout />}>
