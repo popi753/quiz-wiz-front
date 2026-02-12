@@ -1,6 +1,7 @@
-import { useToast, type UserContextType } from "@/contexts";
+import { useNavigate } from "react-router";
 import { AxiosError } from "axios";
 import type { Path, UseFormSetError } from "react-hook-form";
+import { useToast } from "@/contexts";
 import type { ForgotPasswordFormData, LoginFormData, RegisterFormData, ResetPasswordFormData } from "./types";
 
 export const changeVisibility = (e: React.MouseEvent<HTMLOrSVGElement, MouseEvent>) => {
@@ -29,5 +30,12 @@ export function handleErrorResponse<GenericFormDataType extends RegisterFormData
         });
     };
 };
+
+export function handleBackdropClick(e: React.MouseEvent, authDialogRef: React.RefObject<HTMLDialogElement | null>, pathname: string, navigate: ReturnType<typeof useNavigate>) {
+        if (e.target === authDialogRef.current) {
+            navigate(pathname || "/");
+        }
+}
+
 
 
