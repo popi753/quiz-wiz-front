@@ -1,10 +1,13 @@
-import { Link, useNavigate } from 'react-router';
-import { Logo, ChevronLeft } from '@/components';
+import { Link } from 'react-router';
+import { Logo, BackButton } from '@/components';
 import { cn } from '@/helpers/utils';
+import { useEffect } from 'react';
+import { sanctumCsrfCookie } from '@/services';
 
 export default function Auth({ children, bgImageUrl }: { children: React.ReactNode, bgImageUrl: string }) {
-
-    const navigate = useNavigate();
+    useEffect(() => {
+        sanctumCsrfCookie();
+    }, []);
 
     return (
         <div className="flex-1 w-full h-full flex flex-row">
@@ -14,10 +17,7 @@ export default function Auth({ children, bgImageUrl }: { children: React.ReactNo
                 </Link>
             </div>
             <div className="flex-1 p-12">
-                <button onClick={() => navigate(-1)} className='flex flex-row items-center gap-4'>
-                    <ChevronLeft />
-                    <span className='font-medium text-gray-500 text-lg align-middle'>Back</span>
-                </button>
+                <BackButton/>
                 <div className='flex flex-col gap-10 px-6 pt-12'>
                     {children}
                 </div>
