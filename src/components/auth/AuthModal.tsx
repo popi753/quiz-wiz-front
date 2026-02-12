@@ -18,7 +18,7 @@ export default function AuthModal({ children }: { children: React.ReactNode }) {
             authDialog?.close();
             navigate(background?.pathname || "/")
         }
-    }, [background, navigate]);
+    }, [background?.pathname]);
 
     return (
         <dialog ref={authDialogRef} onClick={(e) => handleBackdropClick(e, authDialogRef, background?.pathname || "/", navigate)}
