@@ -5,5 +5,7 @@ export { default as AuthSwitch } from './AuthSwitch';
 export { default as useSubmitForm } from './useSubmitForm';
 export { default as ForgotPassword} from "./ForgotPassword"
 export { default as ResetPassword} from "./ResetPassword"
+export { default as AuthModal } from "./AuthModal";
+export { default as AuthContainer } from "./AuthContainer";
 export * from './helpers';
 export * from './types';
