@@ -67,6 +67,17 @@ body {
 button {
   cursor: pointer;
 }
+
+details{
+    position: relative;
+}
+
+summary{
+  cursor: pointer;  
+  list-style: none;      
+
+}
+
 .loader{
   width: 100%;
   display: flex;
