@@ -1,10 +1,10 @@
-import { UserContext, useToast } from "@/contexts";
+import { UserContext, useToast, type UserContextType } from "@/contexts";
 import useIsMobile from "@/hooks/useIsMobile";
 import { useContext } from "react";
 import { useLocation, useNavigate } from "react-router";
 
 export default function useHeaderHook() {
-    const { user, handleSetUser } = useContext(UserContext) || { user: null, handleSetUser: null };
+    const { user, handleSetUser } = useContext<UserContextType>(UserContext) || { user: { username: "", email: "" }, handleSetUser: () => {} };
     const navigate = useNavigate();
     const toast = useToast();
     const isMobile = useIsMobile();
@@ -17,6 +17,5 @@ export default function useHeaderHook() {
         toast,
         isMobile,
         location
-    }
-
+    };
 };
