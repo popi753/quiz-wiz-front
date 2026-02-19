@@ -1,5 +1,5 @@
 export { default as Logo } from './Logo';
-export { default as BurgerMenu } from './BurgerMenu';
+export { default as BurgerMenuIcon } from './BurgerMenuIcon';
 export { default as Close } from './Close';
 export { default as LargeLogo } from './LargeLogo';
 export { default as GirlReadingIcon } from './GirlReadingIcon';
@@ -13,3 +13,7 @@ export { default as ErrorCircle } from './ErrorCircle';
 export { default as ChevronLeft } from './ChevronLeft';
 export { default as Eye } from './Eye';
 export { default as AlertCircle } from './AlertCircle';
+export { default as PersonIcon } from './PersonIcon';
+export { default as LogOutIcon } from './LogOutIcon';
+
+

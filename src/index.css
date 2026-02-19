@@ -67,7 +67,17 @@ body {
 button {
   cursor: pointer;
 }
-.loader{
+
+details {
+  position: relative;
+}
+
+summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.loader {
   width: 100%;
   display: flex;
   flex-flow: column;
@@ -75,6 +85,7 @@ button {
   gap: 1rem;
   padding: 2rem;
 }
+
 .loader:after {
   content: " ";
   display: block;
@@ -96,8 +107,6 @@ button {
     transform: rotate(360deg);
   }
 }
-
-
 
 @keyframes slide-up {
   from {
