@@ -1,6 +1,6 @@
-import { ScrollButton, CategoriesRowItem, useSlide, scroll } from "./index";
+import { ScrollButton, CategoriesRowItem, scroll } from "./index";
 import { ChevronRight } from "@/components";
-import { useIsMobile, } from "@/hooks";
+import { useIsMobile, useSlide } from "@/hooks";
 import type { Category, SelectedFilters } from "@/types";
 
 type QuizzesCategoriesRowProps = {
