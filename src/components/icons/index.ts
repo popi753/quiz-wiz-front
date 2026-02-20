@@ -15,5 +15,5 @@ export { default as Eye } from './Eye';
 export { default as AlertCircle } from './AlertCircle';
 export { default as PersonIcon } from './PersonIcon';
 export { default as LogOutIcon } from './LogOutIcon';
-
+export { default as ChevronRight } from './ChevronRight';
 
