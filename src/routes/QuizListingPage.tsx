@@ -1,5 +1,5 @@
 import { useQuizListing } from "@/hooks";
-import { Error500Icon, ErrorPage, QuizzesCategoriesRow } from "@/components";
+import { Error500Icon, ErrorPage, FilterMenu, QuizzesCategoriesRow } from "@/components";
 
 export default function QuizListingPage() {
 
@@ -17,8 +17,13 @@ export default function QuizListingPage() {
             <div className="w-full flex flex-row justify-between items-center gap-2 max-md:flex-col">
                 <QuizzesCategoriesRow
                     selectedFilters={selectedFilters} setSelectedFilters={setSelectedFilters}
-                    categories={filterOptionsData?.categories}
+                    categories={filterOptionsData?.categories ?? []}
                 />
+
+                <FilterMenu
+                    setSelectedFilters={setSelectedFilters}
+                    categories={filterOptionsData?.categories ?? []}
+                    difficulties={filterOptionsData?.difficulties ?? []} />
             </div>
 
         </div>

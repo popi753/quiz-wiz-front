@@ -1,4 +1,12 @@
 export { default as QuizzesCategoriesRow } from './QuizzesCategoriesRow';
 export { default as ScrollButton } from './ScrollButton';
 export { default as CategoriesRowItem } from './CategoriesRowItem';
-export { scroll } from './helpers';
+export { default as FilterMenu } from './FilterMenu';
+export { default as FilterButton } from './FilterButton';
+export { default as FilterForm } from './FilterForm';
+export { default as SearchInputField } from './SearchInputField';
+export { default as AppliedFiltersContainer } from './AppliedFiltersContainer';
+export { default as AppliedFiltersItem } from './AppliedFiltersItem';
+export { default as AppliedSorterContainer } from './AppliedSorterContainer';
+export { default as AppliedSorterItem } from './AppliedSorterItem';
+export { scroll, handleSubmit } from './helpers';
