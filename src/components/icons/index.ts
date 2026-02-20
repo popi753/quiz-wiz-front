@@ -1,6 +1,6 @@
 export { default as Logo } from './Logo';
 export { default as BurgerMenuIcon } from './BurgerMenuIcon';
-export { default as Close } from './Close';
+export { default as CloseIcon } from './CloseIcon';
 export { default as LargeLogo } from './LargeLogo';
 export { default as GirlReadingIcon } from './GirlReadingIcon';
 export { default as ArrowUpRight } from './ArrowUpRight';
@@ -16,4 +16,10 @@ export { default as AlertCircle } from './AlertCircle';
 export { default as PersonIcon } from './PersonIcon';
 export { default as LogOutIcon } from './LogOutIcon';
 export { default as ChevronRight } from './ChevronRight';
+export { default as FilterIcon } from './FilterIcon';
+export { default as SearchIcon } from './SearchIcon';
+export { default as SorterArrow} from "./SorterArrow";
+export { default as DiamonIcon} from "./DiamondIcon";
+export { default as ArrowUp} from "./ArrowUp";
+export { default as CheckMark } from './CheckMark';
 
