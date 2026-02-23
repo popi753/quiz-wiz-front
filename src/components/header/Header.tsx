@@ -1,9 +1,10 @@
 import { useEffect, useRef } from "react";
 import { Link } from "react-router";
-import { BurgerMenuModal, useHeaderHook } from "./index";
+import { BurgerMenuModal, SearchField } from "./index";
 import { PrimaryButton, Logo, BurgerMenuIcon, PersonIcon, LogOutIcon } from "@/components";
 import { handleDetailsBackdropClick } from "@/helpers";
 import { onLogout } from "@/services";
+import { useHeaderHook } from "@/hooks";
 
 export default function Header() {
   const detailsRef = useRef<HTMLDetailsElement>(null);
@@ -18,7 +19,7 @@ export default function Header() {
   const { user, handleSetUser, navigate, toast, isMobile, location } = useHeaderHook();
 
   return (
-    <header className="w-full h-auto flex flex-row justify-between items-center px-20 p-4 border-b border-gray-300 max-sm:px-6">
+    <header className="w-full h-18 flex flex-row justify-between items-center px-20 py-3 border-b border-gray-300 max-sm:px-6">
       <div className="flex flex-row justify-between items-center gap-10 max-sm:w-full">
         <Link to="/">
           <Logo />
@@ -28,13 +29,20 @@ export default function Header() {
             Quizzes
           </span>
         </Link>
-        <button className="sm:hidden" onClick={() => dialogRef.current?.showModal()}>
+        
+        {isMobile && 
+        <div className="flex flex-row items-center gap-4">
+          <SearchField/>
+          <button onClick={() => dialogRef.current?.showModal()}>
           <BurgerMenuIcon />
         </button>
+        </div>
+        }
       </div>
       <BurgerMenuModal ref={dialogRef} />
 
-      <div className="flex flex-row justify-between items-center gap-2 font-raleway max-sm:hidden">
+      <div className="flex flex-row justify-between items-center gap-4 font-raleway max-sm:hidden">
+        <SearchField/>
         {user.username ? (
           <details ref={detailsRef}>
             <summary className="flex justify-center items-center gap-2">
@@ -91,4 +99,4 @@ export default function Header() {
       </div>
     </header>
   );
-}
+};
