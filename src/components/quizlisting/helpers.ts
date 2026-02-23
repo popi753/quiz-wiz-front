@@ -1,4 +1,4 @@
-import type { SelectedFilters } from "@/hooks/useQuizListing copy";
+import type { SelectedFilters } from "@/types";
 
 export function scroll(direction: "left" | "right", categoriesListRef: React.RefObject<HTMLDivElement | null>) {
     if (!categoriesListRef.current) return;
