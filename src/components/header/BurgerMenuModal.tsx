@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import { PrimaryButton, Logo, CloseIcon, PersonIcon } from "@/components";
 import { handleDialogBackdropClick } from "@/helpers";
 import { onLogout } from "@/services";
-import { useHeaderHook } from "@/hooks";
+import { useHeaderHook } from "./index";
 
 const BurgeMenuModal = forwardRef<HTMLDialogElement>((_props, ref) => {
   const headerDialogRef = useRef<HTMLDialogElement>(null);

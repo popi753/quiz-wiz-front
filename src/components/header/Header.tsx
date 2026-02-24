@@ -1,10 +1,9 @@
 import { useEffect, useRef } from "react";
 import { Link } from "react-router";
-import { BurgerMenuModal, SearchField } from "./index";
+import { BurgerMenuModal, SearchField, useHeaderHook } from "./index";
 import { PrimaryButton, Logo, BurgerMenuIcon, PersonIcon, LogOutIcon } from "@/components";
 import { handleDetailsBackdropClick } from "@/helpers";
 import { onLogout } from "@/services";
-import { useHeaderHook } from "@/hooks";
 
 export default function Header() {
   const detailsRef = useRef<HTMLDetailsElement>(null);
