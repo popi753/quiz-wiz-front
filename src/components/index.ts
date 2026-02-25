@@ -7,4 +7,4 @@ export { default as ErrorPage } from './ErrorPage';
 export { default as Toast } from './Toast';
 export { Register, Login, ForgotPassword, ResetPassword, AuthContainer, AuthModal } from './auth';
 export { default as BackButton } from './BackButton';
-export { QuizzesCategoriesRow, FilterMenu } from './quizListing';
+export { QuizzesCategoriesRow, FilterMenu, LoadMoreButton } from './quizListing';

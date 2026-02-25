@@ -27,7 +27,7 @@ export default function FilterForm({ setSelectedFilters, difficulties, categorie
 
                     <div className="flex flex-row items-center gap-4">
                         <PrimaryButton btnType="purple" type="submit" className="w-28 h-9 rounded-lg"> Confirm</PrimaryButton>
-                        <hr className="w-4 text-gray-500 -rotate-90" />
+                        <hr className="w-4 text-gray-200 -rotate-90" />
                         <button type="reset" className="flex flex-row items-center gap-4 cursor-pointer">
                             <span className="whitespace-nowrap text-gray-500 text-sm leading-6">reset all filters</span>
                         </button>

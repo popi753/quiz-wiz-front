@@ -6,7 +6,7 @@ import type { Category, SelectedFilters } from "@/types";
 type QuizzesCategoriesRowProps = {
     selectedFilters: SelectedFilters;
     setSelectedFilters: React.Dispatch<React.SetStateAction<SelectedFilters>>;
-    categories?: Category[];
+    categories: Category[];
 }
 
 export default function QuizzesCategoriesRow({ selectedFilters, setSelectedFilters, categories }: QuizzesCategoriesRowProps) {

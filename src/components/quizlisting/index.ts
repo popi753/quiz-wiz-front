@@ -9,4 +9,5 @@ export { default as AppliedFiltersContainer } from './AppliedFiltersContainer';
 export { default as AppliedFiltersItem } from './AppliedFiltersItem';
 export { default as AppliedSorterContainer } from './AppliedSorterContainer';
 export { default as AppliedSorterItem } from './AppliedSorterItem';
+export { default as LoadMoreButton } from './LoadMoreButton';
 export { scroll, handleSubmit } from './helpers';
