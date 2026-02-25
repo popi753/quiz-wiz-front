@@ -1,6 +1,6 @@
 import { forwardRef, useImperativeHandle, useRef } from "react";
 import { Link } from "react-router";
-import { PrimaryButton, Logo, Close, PersonIcon } from "@/components";
+import { PrimaryButton, Logo, CloseIcon, PersonIcon } from "@/components";
 import { handleDialogBackdropClick } from "@/helpers";
 import { onLogout } from "@/services";
 import { useHeaderHook } from "./index";
@@ -29,7 +29,7 @@ const BurgeMenuModal = forwardRef<HTMLDialogElement>((_props, ref) => {
             <Logo />
           </Link>
           <button onClick={() => headerDialogRef.current?.close()}>
-            <Close />
+            <CloseIcon />
           </button>
         </div>
         <div>
