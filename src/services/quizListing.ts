@@ -1,13 +1,25 @@
 import instance from './apiAxiosInstance';
-import type { Category, Difficulty } from '@/types';
+import type { Category, Difficulty, Meta, Quiz, SelectedFilters } from '@/types';
 
-export async function fetchFilterOptions(): Promise<{ categories: Category[], difficulties: Difficulty[] }> {
-    try {
-        const response = await instance.get("/quiz/filters");
-        return response.data;
-    } catch (error) {
-        throw new Error(error instanceof Error ? error.message : 'An unknown error occurred');
-    }
+type fetchFilterOptionsResponse = {
+    categories: Category[],
+    difficulties: Difficulty[],
+};
+
+export async function fetchFilterOptions(): Promise<fetchFilterOptionsResponse> {
+    const response = await instance.get("/quiz/filters");
+    return response.data;
+
+};
+
+type fetchQuizzesResponse = {
+    data: Quiz[],
+    meta: Meta,
+};
+
+export async function fetchQuizzes(selectedFilters: SelectedFilters, cursor?: string,): Promise<fetchQuizzesResponse> {
+    const response = await instance.get(`/quizlisting?cursor=${cursor}&categories=${selectedFilters.categories}&difficulties=${selectedFilters.difficulties}&sorter=${selectedFilters.sorter}&search=${selectedFilters.search}&myQuizzes=${selectedFilters.myQuizzes}&notCompleted=${selectedFilters.notCompleted}`);
+    return response.data;
 };
 
 

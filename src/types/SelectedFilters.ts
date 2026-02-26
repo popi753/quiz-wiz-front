@@ -4,4 +4,5 @@ export type SelectedFilters = {
     sorter: string;
     myQuizzes?: string;
     notCompleted?: string;
+    search?: string;
 }
