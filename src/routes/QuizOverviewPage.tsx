@@ -1,9 +1,9 @@
-import { BackButton, Error404Icon, ErrorPage } from "@/components";
+import { BackButton, Error404Icon, ErrorPage, QuizOverview, RelatedQuizzes } from "@/components";
 import { useQuizOverview } from "@/hooks";
 
 export default function QuizOverviewPage() {
 
-    const {navigate, data, isLoading, error} = useQuizOverview();
+    const { navigate, data, isLoading, error } = useQuizOverview();
 
     if (isLoading) {
         return <div className="loader">Loading...</div>;
@@ -19,6 +19,10 @@ export default function QuizOverviewPage() {
             <BackButton onClick={() => navigate("/quizlisting")} />
 
             <div className="w-full flex-1 flex flex-row items-start justify-between gap-8">
+
+                <QuizOverview quiz={data.quiz} />
+
+                <RelatedQuizzes relatedQuizzes={data.relatedQuizzes} />
 
             </div>
         </div>
