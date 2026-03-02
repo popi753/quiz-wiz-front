@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router";
 import { Error404Icon, ErrorPage, ForgotPassword, Layout, Login, Register, ResetPassword } from "@/components";
-import { Auth, LandingPage, QuizListingPage } from "@/routes";
+import { Auth, LandingPage, QuizListingPage, QuizOverviewPage } from "@/routes";
 import { useBackgroundLocation, useIsMobile } from "@/hooks";
 
 function App() {
@@ -18,6 +18,8 @@ function App() {
                 <Route path="/" element={<Layout />}>
                     <Route index element={<LandingPage />} />
                     <Route path="/quizlisting" element={<QuizListingPage />} />
+                    <Route path="/quiz/:id" element={<QuizOverviewPage />} />
+                    
 
                     <Route
                         path="*"
