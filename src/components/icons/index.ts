@@ -18,12 +18,17 @@ export { default as LogOutIcon } from './LogOutIcon';
 export { default as ChevronRight } from './ChevronRight';
 export { default as FilterIcon } from './FilterIcon';
 export { default as SearchIcon } from './SearchIcon';
-export { default as SorterArrow} from "./SorterArrow";
-export { default as DiamonIcon} from "./DiamondIcon";
-export { default as ArrowUp} from "./ArrowUp";
+export { default as SorterArrow } from "./SorterArrow";
+export { default as DiamonIcon } from "./DiamondIcon";
+export { default as ArrowUp } from "./ArrowUp";
 export { default as CheckMark } from './CheckMark';
-export { default as ArrowDown} from "./ArrowDown";
-export { default as Bulb} from "./Bulb";
-export { default as Diploma} from "./Diploma";
-export { default as Zap} from "./Zap";
+export { default as ArrowDown } from "./ArrowDown";
+export { default as Bulb } from "./Bulb";
+export { default as Diploma } from "./Diploma";
+export { default as Zap } from "./Zap";
+export { default as HashTag } from "./Hashtag";
+export { default as RocketIcon } from "./RocketIcon";
+export { default as ClockIcon } from "./ClockIcon";
+
+
 
