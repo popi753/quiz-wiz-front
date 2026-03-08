@@ -3,3 +3,5 @@ export { type Difficulty } from "./Difficulty";
 export { type SelectedFilters } from "./SelectedFilters";
 export { type Quiz } from "./Quiz";
 export { type Meta } from "./Meta";
+export { type Submission } from "./Submission";
+export { type Question } from "./Question";

@@ -1,4 +1,4 @@
-import type { Category, Submission, Difficulty } from "./index";
+import type { Category, Submission, Difficulty, Question } from "./index";
 
 export type Quiz = {
     id: number,
