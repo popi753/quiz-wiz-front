@@ -1,16 +1,9 @@
-import { useParams } from "react-router";
-import { useQuery } from "@tanstack/react-query";
-import { fetchQuizQuestions, } from "@/services";
-import { Error404Icon, ErrorPage } from "@/components";
+import { Error404Icon, ErrorPage, QuizFillingHeader, QuizForm } from "@/components";
+import { useQuizFilling } from "@/hooks";
 
 export default function QuizFillingPage() {
 
-    const { id } = useParams();
-    const { data, isLoading, error } = useQuery({
-        queryKey: ['quizFillingData', id],
-        queryFn: () => fetchQuizQuestions(Number(id)),
-        retry: false,
-    });
+    const { data, isLoading, error, timerRef } = useQuizFilling();
 
     if (isLoading) {
         return <div className="loader">Loading...</div>;
@@ -22,7 +15,14 @@ export default function QuizFillingPage() {
 
     return (
         <div className="flex-1 w-full h-full flex flex-col items-center gap-24 px-22 py-15">
+            <QuizFillingHeader quiz={data} />
 
+            <QuizForm
+                id={data.id}
+                timerRef={timerRef}
+                questions={data.questions ?? []}
+                time={data.time}
+            />
         </div>
     );
 };
