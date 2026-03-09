@@ -19,10 +19,7 @@ export default function QuizForm({ id, timerRef, questions, time }: QuizFormProp
         <form
             ref={formRef}
             className="w-full flex flex-row"
-            onSubmit={(e) => {
-                handleSubmit(e);
-            }
-            }>
+            onSubmit={handleSubmit}>
             <QuizQuestionsContainer questions={questions} />
 
             <Timer
