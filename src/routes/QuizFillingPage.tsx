@@ -1,9 +1,9 @@
-import { Error404Icon, ErrorPage, QuizFillingHeader, QuizForm } from "@/components";
+import { Error404Icon, ErrorPage, QuizFillingHeader, QuizForm, ResultModal } from "@/components";
 import { useQuizFilling } from "@/hooks";
 
 export default function QuizFillingPage() {
 
-    const { data, isLoading, error, timerRef } = useQuizFilling();
+    const { data, isLoading, error, timerRef, ResultModalRef, mutate, isPending, isSuccess, submissionData } = useQuizFilling();
 
     if (isLoading) {
         return <div className="loader">Loading...</div>;
@@ -20,9 +20,20 @@ export default function QuizFillingPage() {
             <QuizForm
                 id={data.id}
                 timerRef={timerRef}
+                mutate={mutate}
                 questions={data.questions ?? []}
                 time={data.time}
             />
+
+            <ResultModal
+                quizTitle={data.title}
+                quizLevel={data.difficulty}
+                time={submissionData?.time ?? 0}
+                mistakes={submissionData?.mistakes ?? 0}
+                rightAnswers={submissionData?.rightAnswers ?? 0}
+                isPending={isPending}
+                isSuccess={isSuccess}
+                ref={ResultModalRef} />
         </div>
     );
 };

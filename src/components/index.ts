@@ -9,6 +9,7 @@ export { Register, Login, ForgotPassword, ResetPassword, AuthContainer, AuthModa
 export { default as BackButton } from './BackButton';
 export { QuizzesCategoriesRow, FilterMenu, QuizCard, LoadMoreButton } from './quizListing';
 export { QuizOverview, QuizDetailsRow, RelatedQuizzes } from './quiz';
+export { QuizFillingHeader, QuizForm, ResultModal } from './quizFilling';
 
 
 
