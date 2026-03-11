@@ -5,3 +5,6 @@ export { type Quiz } from "./Quiz";
 export { type Meta } from "./Meta";
 export { type Submission } from "./Submission";
 export { type Question } from "./Question";
+export { type Answer } from "./Answer";
+export { type SubmissionAnswer } from "./SubmissionAnswer";
+export { type SubmitQuizProps } from "./SubmitQuizProps";
