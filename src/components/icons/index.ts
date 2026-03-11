@@ -31,6 +31,7 @@ export { default as RocketIcon } from "./RocketIcon";
 export { default as ClockIcon } from "./ClockIcon";
 export { default as Tack } from "./Tack";
 export { default as OptionsIcon } from "./OptionsIcon";
+export { default as ResultCheckCircle } from "./ResultCheckCircle";
 
 
 
