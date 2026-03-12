@@ -1,7 +1,8 @@
 import { useRef } from "react";
-import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router";
-import { fetchQuizQuestions } from "@/services";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { fetchQuizQuestions, submitQuiz } from "@/services";
+import type { SubmitQuizProps } from "@/types";
 
 export default function useQuizFilling() {
 
@@ -13,6 +14,17 @@ export default function useQuizFilling() {
     });
 
     const timerRef = useRef<number | null>(null);
+    const ResultModalRef = useRef<HTMLDialogElement>(null);
 
-    return { data, isLoading, error, timerRef };
+    const { mutate, isPending, isSuccess, data: submissionData } = useMutation<{ message: string; mistakes: number; rightAnswers: number, time: number }, Error, SubmitQuizProps>({
+        mutationFn: ({ quizId, remainingTime, submittedQuiz }) => submitQuiz({ quizId, remainingTime, submittedQuiz }),
+        onMutate: () => {
+            if (timerRef.current) {
+                clearInterval(timerRef.current);
+            }
+            ResultModalRef.current?.showModal();
+        }
+    });
+
+    return { data, isLoading, error, timerRef, ResultModalRef, mutate, isPending, isSuccess, submissionData };
 };

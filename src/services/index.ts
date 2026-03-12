@@ -4,4 +4,4 @@ export { default as sanctumCsrfCookie } from "./sanctumCsrfCookie";
 export * from "./auth";
 export * from "./quizListing";
 export { fetchQuiz } from "./quiz";
-export { fetchQuizQuestions } from "./quizFilling";
+export { fetchQuizQuestions, submitQuiz } from "./quizFilling";
