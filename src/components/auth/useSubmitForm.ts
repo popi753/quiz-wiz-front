@@ -68,5 +68,5 @@ export default function useSubmitForm(props: UseSubmitFormProps) {
         },
         [mutate, setError, toast, handleSetUser, type, navigate],
     );
-    return { isPending, onSubmit };
+    return { isPending, onSubmit, toast };
 };

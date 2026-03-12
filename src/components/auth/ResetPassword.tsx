@@ -57,7 +57,7 @@ export default function ResetPassword() {
           Reset Password
         </PrimaryButton>
 
-        <AuthSwitch text="Already have an account?" link="/login" linkText="Log in" />
+        <AuthSwitch text="Remember the credentials?" link="/login" linkText="Log in" />
       </form>
     </>
   );

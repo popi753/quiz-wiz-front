@@ -1,15 +1,25 @@
 import { useEffect } from "react";
 import { Link, useSearchParams } from "react-router";
 import { useForm } from "react-hook-form";
-
 import { PrimaryButton } from "@/components";
 import { AuthInputField, useSubmitForm, type LoginFormData, AuthSwitch } from './index';
-
-import { useToast } from "@/contexts";
 import { onLogin } from "@/services";
+import { useBackgroundLocation } from "@/hooks";
 
 export default function Login() {
-    const toast = useToast();
+
+    const { register, setError, handleSubmit, formState: { errors } } = useForm<LoginFormData>({
+        mode: 'all',
+        defaultValues: {
+            email: '',
+            password: '',
+            remember: false,
+        }
+    });
+
+    const { isPending, onSubmit, toast } = useSubmitForm({ setError, onAuthFunc: onLogin, type: 'login' });
+
+    const background = useBackgroundLocation();
     const [searchParams] = useSearchParams();
     useEffect(() => {
         const verify = searchParams.get("verify");
@@ -37,18 +47,7 @@ export default function Login() {
                 message: "The email verification link is invalid or has expired. try again.",
             });
         }
-    }, [searchParams]);
-
-    const { register, setError, handleSubmit, formState: { errors } } = useForm<LoginFormData>({
-        mode: 'all',
-        defaultValues: {
-            email: '',
-            password: '',
-            remember: false,
-        }
-    });
-
-    const { isPending, onSubmit } = useSubmitForm({ setError, onAuthFunc: onLogin, type: 'login' });
+    }, [searchParams, toast]);
 
     return (
         <>
@@ -89,23 +88,23 @@ export default function Login() {
                                     {...register('remember', {
                                         required: {
                                             value: false,
-                                            message: 'You must accept the terms and privacy policy',
+                                            message: 'You must accept to be remembered for 30 days',
                                         },
                                     })}
                                     className="w-5 h-5 accent-black"
                                     type="checkbox"
-                                    name="terms"
-                                    id="terms"
+                                    name="remember"
+                                    id="remember"
                                 />
                                 <label
-                                    htmlFor="terms"
+                                    htmlFor="remember"
                                     className="text-sm text-gray-700 leading-[125%] tracking-normal"
                                 >
                                     Remember for 30 days
                                 </label>
                             </div>
 
-                            <Link to={'/forgetpassword'} className="hover:underline">
+                            <Link to={'/forgotpassword'} state={{ background: background }} className="hover:underline">
                                 Forgot password?
                             </Link>
                         </div>
