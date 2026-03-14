@@ -1,8 +1,6 @@
 import { Link } from "react-router";
 import { useQuery } from "@tanstack/react-query";
-
 import { fetchFooterData } from "@/services";
-
 import FooterList from "./FooterList";
 import { Logo } from "@/components";
 
@@ -19,7 +17,7 @@ export default function Footer() {
                 <Link to="/" className="max-sm:border-b max-sm:border-gray-300 max-sm:w-full max-sm:pb-6">
                     <Logo />
                 </Link>
-                <FooterList headerText="Content" items={[{ text: "Quizzes", link: "/quizzes", blank: false }]} />
+                <FooterList headerText="Content" items={[{ text: "Quizzes", link: "/quizlisting", blank: false }]} />
 
                 {isLoading ? <p>Loading...</p>
                     : data?.map((item, index) => (
