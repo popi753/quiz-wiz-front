@@ -28,20 +28,20 @@ export default function Header() {
             Quizzes
           </span>
         </Link>
-        
-        {isMobile && 
-        <div className="flex flex-row items-center gap-4">
-          <SearchField/>
-          <button onClick={() => dialogRef.current?.showModal()}>
-          <BurgerMenuIcon />
-        </button>
-        </div>
+
+        {isMobile &&
+          <div className="flex flex-row items-center gap-4">
+            <SearchField />
+            <button onClick={() => dialogRef.current?.showModal()}>
+              <BurgerMenuIcon />
+            </button>
+          </div>
         }
       </div>
       <BurgerMenuModal ref={dialogRef} />
 
       <div className="flex flex-row justify-between items-center gap-4 font-raleway max-sm:hidden">
-        <SearchField/>
+        <SearchField />
         {user.username ? (
           <details ref={detailsRef}>
             <summary className="flex justify-center items-center gap-2">
@@ -59,7 +59,10 @@ export default function Header() {
                 <div
                   onClick={() =>
                     onLogout()
-                      .then(() => handleSetUser({ username: "", email: "" }))
+                      .then(() => {
+                        handleSetUser({ username: "", email: "" });
+                        window.location.reload();
+                      })
                       .catch((error) =>
                         toast("error", { header: "Logout Error", message: error.message }),
                       )
