@@ -18,7 +18,7 @@ type fetchQuizzesResponse = {
 };
 
 export async function fetchQuizzes(selectedFilters: SelectedFilters, cursor?: string,): Promise<fetchQuizzesResponse> {
-    const response = await instance.get(`/quizlisting?cursor=${cursor}&categories=${selectedFilters.categories}&difficulties=${selectedFilters.difficulties}&sorter=${selectedFilters.sorter}&search=${selectedFilters.search}&myQuizzes=${selectedFilters.myQuizzes}&notCompleted=${selectedFilters.notCompleted}`);
+    const response = await instance.get(`/quiz?cursor=${cursor}&categories=${selectedFilters.categories}&difficulties=${selectedFilters.difficulties}&sorter=${selectedFilters.sorter}&search=${selectedFilters.search}&myQuizzes=${selectedFilters.myQuizzes}&notCompleted=${selectedFilters.notCompleted}`);
     return response.data;
 };
 
