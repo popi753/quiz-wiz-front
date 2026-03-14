@@ -2,11 +2,10 @@ import { AlertCircle, Eye } from '@/components';
 import { changeVisibility, type InputProps } from './index';
 
 export default function AuthInputField({ id, label, required, error, register, ...props }: InputProps) {
-
     return (
         <>
             <div className="relative flex flex-1 flex-col gap-2">
-                <label htmlFor={id} className='text-sm leading-[125%] text-gray-700 tracking-normal'>
+                <label htmlFor={id} className='text-sm leading-5 text-gray-700 tracking-normal'>
                     {label}
                 </label>
                 <input
@@ -25,7 +24,7 @@ export default function AuthInputField({ id, label, required, error, register, .
 
                 {error ? <AlertCircle className='absolute right-[3%] top-1/2 -translate-y-1/2' /> :
                     props.type === "password" ? <Eye className='absolute right-[3%] top-1/2 -translate-y-1/2' onClick={changeVisibility} /> : null}
-                <span className="block h-5 text-sm text-orange leading-5 font-normal tracking-normal">{error || " "}</span>
+                <span className="block h-5 text-sm text-orange leading-5 tracking-normal">{error || " "}</span>
             </div>
         </>
     );
