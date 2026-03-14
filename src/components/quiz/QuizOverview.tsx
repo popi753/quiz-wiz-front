@@ -30,7 +30,7 @@ export default function QuizOverview({ quiz }: { quiz: Quiz }) {
                     <div className=" flex flex-col gap-10">
                         <QuizDetailsRow quiz={quiz} />
 
-                        {!quiz.submission &&
+                        {(!quiz.submission || quiz.submission.length === 0) &&
                             <PrimaryButton btnType="purple" className="w-80 h-12 rounded-lg" type="button" onClick={() => navigate(`/filling/${quiz.id}`)}>
                                 Start quiz
                             </PrimaryButton>
