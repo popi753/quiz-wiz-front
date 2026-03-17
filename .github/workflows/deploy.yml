@@ -13,7 +13,6 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           username: ${{ secrets.SSH_USERNAME }}
-          script_stop: true
           script: |
             cd apps/luka-popiashvili-quiz-wiz-front
             git pull
