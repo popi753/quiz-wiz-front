@@ -13,7 +13,7 @@ export default function LandingPage() {
         <>
             {isLoading ? <div className="loader">Loading...</div> :
                 error ? <ErrorPage errorText="Internal Server Error" errorCode={500} icon={<Error500Icon />} /> :
-                    (data?.totalQuizzes && data?.totalCategories) ?
+                    (data) ?
                         <>
                             <div className="w-full flex flex-col justify-center items-start gap-8 px-20 pb-28 max-md:gap-4 max-lg:pb-2 max-sm:px-10">
                                 <LargeLogo />
@@ -28,11 +28,11 @@ export default function LandingPage() {
                             </div>
 
                             <div className="group cursor-pointer z-0 w-full flex flex-col justify-center items-start gap-4 bg-orange text-white px-24 pt-16 pb-20 max-xl:pb-10 max-xl:pt-8 max-xl:px-12 max-md:px-10 max-md:py-8">
-                                <span className="font-raleway font-black text-7xl leading-14 ">{data.totalQuizzes}+</span>
+                                <span className="font-raleway font-black text-7xl leading-14 ">{data.totalQuizzes ? `${data.totalQuizzes}+` : "Different"}</span>
                                 <span className="flex items-start gap-4 font-raleway font-black text-5xl leading-14 max-md:underline group-hover:underline"><span>Quiz Games</span> <ArrowUpRight /></span>
                             </div>
                             <div className="group cursor-pointer z-0 w-full flex flex-col justify-center items-start gap-4  bg-purple text-white px-24 pt-8 pb-16 max-xl:pb-10 max-xl:pt-4 max-xl:px-12 max-md:px-10 max-md:py-8">
-                                <span className="font-raleway font-black text-7xl leading-14 ">{data.totalCategories}+</span>
+                                <span className="font-raleway font-black text-7xl leading-14 ">{data.totalCategories ? `${data.totalCategories}+` : "Different"}</span>
                                 <span className="flex items-start gap-4 font-raleway font-black text-5xl leading-14 max-md:underline group-hover:underline">Different Genres <ArrowUpRight /></span>
                             </div>
                         </> :

@@ -1,7 +1,7 @@
 import instance from "./apiAxiosInstance";
 import type { Quiz, SubmitQuizProps } from "@/types";
 
-export async function fetchQuizQuestions(id: number): Promise<Quiz> {
+export async function fetchQuizQuestions(id: number): Promise<{quiz: Quiz}> {
     const response = await instance.get(`quiz/${id}/questions`);
     return response.data;
 };

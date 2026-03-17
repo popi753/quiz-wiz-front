@@ -57,7 +57,9 @@ const BurgeMenuModal = forwardRef<HTMLDialogElement>((_props, ref) => {
                 onClick={() => {
                   headerDialogRef.current?.close();
                   onLogout()
-                    .then(() => handleSetUser({ username: "", email: "" }))
+                    .then(() => { 
+                      handleSetUser({ username: "", email: "" }); 
+                      window.location.reload(); })
                     .catch((error) =>
                       toast("error", { header: "Logout Error", message: error.message }),
                     );

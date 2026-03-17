@@ -31,7 +31,7 @@ export default function QuizCard({ quiz, className }: { quiz: Quiz, className?: 
                                     icon={<CheckMark className="" />}
                                     iconBg="bg-emerald-100"
                                     header="Completed"
-                                    text={submission[0].created_at.split("T")[0]}
+                                    text={submission[0].created_at.split(" ")[0]}
                                 />
                                 <QuizCardDetailsItem
                                     header="Total Time"

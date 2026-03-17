@@ -12,6 +12,7 @@ export default function useQuizFilling() {
         queryFn: () => fetchQuizQuestions(Number(id)),
         retry: false,
     });
+    const quiz = data?.quiz;
 
     const timerRef = useRef<number | null>(null);
     const ResultModalRef = useRef<HTMLDialogElement>(null);
@@ -26,5 +27,5 @@ export default function useQuizFilling() {
         }
     });
 
-    return { data, isLoading, error, timerRef, ResultModalRef, mutate, isPending, isSuccess, submissionData };
+    return { data: quiz, isLoading, error, timerRef, ResultModalRef, mutate, isPending, isSuccess, submissionData };
 };
