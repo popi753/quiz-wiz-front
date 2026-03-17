@@ -1,12 +1,11 @@
 import { Routes, Route } from "react-router";
 import { Error404Icon, ErrorPage, ForgotPassword, Layout, Login, Register, ResetPassword } from "@/components";
 import { Auth, LandingPage, QuizFillingPage, QuizListingPage, QuizOverviewPage } from "@/routes";
-import { useBackgroundLocation, useIsMobile } from "@/hooks";
+import { useApp } from "@/hooks";
 
 function App() {
 
-    const isMobile = useIsMobile();
-    const backgroundUrlLocation = useBackgroundLocation();
+    const {isMobile, backgroundUrlLocation} = useApp();
 
     return (
         <>
@@ -19,7 +18,6 @@ function App() {
                 <Route path="/filling/:id" element={<QuizFillingPage />} />
 
                 <Route path="/" element={<Layout />}>
-
                     <Route index element={<LandingPage />} />
                     <Route path="/quizlisting" element={<QuizListingPage />} />
                     <Route path="/quiz/:id" element={<QuizOverviewPage />} />
