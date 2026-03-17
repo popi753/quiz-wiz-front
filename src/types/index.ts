@@ -8,3 +8,5 @@ export { type Question } from "./Question";
 export { type Answer } from "./Answer";
 export { type SubmissionAnswer } from "./SubmissionAnswer";
 export { type SubmitQuizProps } from "./SubmitQuizProps";
+export { type onAuthResponse } from "./onAuthResponse";
+export { type onUserResponse } from "./onUserResponse";

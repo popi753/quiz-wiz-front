@@ -1,58 +1,33 @@
 import instance from "./apiAxiosInstance";
-import type { UserContextType } from "@/contexts";
 import type { RegisterFormData, LoginFormData, ForgotPasswordFormData, ResetPasswordFormData } from "@/components/auth";
+import type { onAuthResponse, onUserResponse } from "@/types";
 
-export type onRegisterResponseType = {
-        success: boolean,
-        message: string,
-};
-
-export async function onRegister(data: RegisterFormData): Promise<onRegisterResponseType> {
+export async function onRegister(data: RegisterFormData): Promise<onAuthResponse> {
         const response = await instance.post('/register', data);
         return response.data;
 };
 
-export type onLoginResponseType = {
-        success: boolean,
-        user: UserContextType['user'],
-};
-
-export async function onLogin(data: LoginFormData): Promise<onLoginResponseType> {
+export async function onLogin(data: LoginFormData): Promise<onUserResponse> {
         const response = await instance.post('/login', data);
         return response.data;
 };
 
-type onForgotPasswordResponseType = {
-        success: boolean,
-        status: string,
-};
-
-export async function onForgotPassword(data: ForgotPasswordFormData): Promise<onForgotPasswordResponseType> {
+export async function onForgotPassword(data: ForgotPasswordFormData): Promise<onAuthResponse> {
         const response = await instance.post('/forgot-password', data);
         return response.data;
 };
 
-export type onResetPasswordResponseType = {
-        success: boolean,
-        status: string,
-};
-
-export async function onResetPassword(data: ResetPasswordFormData): Promise<onResetPasswordResponseType> {
+export async function onResetPassword(data: ResetPasswordFormData): Promise<onAuthResponse> {
         const response = await instance.post('/reset-password', data);
         return response.data;
 };
 
-type onCheckProfileResponseType = {
-        success: boolean,
-        user: UserContextType['user'] | null,
-};
-
-export async function onCheckProfile(): Promise<onCheckProfileResponseType> {
+export async function onCheckProfile(): Promise<onUserResponse> {
         const response = await instance.get('/user');
         return response.data;
 };
 
-export async function onLogout(): Promise<{ success: boolean, message: string }> {
+export async function onLogout(): Promise<onAuthResponse> {
         const response = await instance.post('/logout');
         return response.data;
 };
