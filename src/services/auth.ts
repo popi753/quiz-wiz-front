@@ -48,7 +48,7 @@ type onCheckProfileResponseType = {
 };
 
 export async function onCheckProfile(): Promise<onCheckProfileResponseType> {
-        const response = await instance.post('/user');
+        const response = await instance.get('/user');
         return response.data;
 };
 
