@@ -3,22 +3,22 @@ import { useNavigate } from "react-router";
 import { useMutation } from "@tanstack/react-query";
 import type { UseFormSetError } from "react-hook-form";
 import { UserContext, useToast } from "@/contexts";
-import type { onForgotPasswordResponseType, onLoginResponseType, onRegisterResponseType, onResetPasswordResponseType } from "@/services";
+import type { onAuthResponse, onUserResponse } from "@/types";
 import type { ForgotPasswordFormData, LoginFormData, RegisterFormData, ResetPasswordFormData } from "./types";
 import { handleErrorResponse } from "./helpers";
 
 type UseSubmitFormProps =
-    | { setError: UseFormSetError<RegisterFormData>; onAuthFunc: (data: RegisterFormData) => Promise<onRegisterResponseType>; type: 'register'; }
-    | { setError: UseFormSetError<LoginFormData>; onAuthFunc: (data: LoginFormData) => Promise<onLoginResponseType>; type: 'login'; }
-    | { setError: UseFormSetError<ForgotPasswordFormData>; onAuthFunc: (data: ForgotPasswordFormData) => Promise<onForgotPasswordResponseType>; type: 'forgot-password'; }
-    | { setError: UseFormSetError<ResetPasswordFormData>; onAuthFunc: (data: ResetPasswordFormData) => Promise<onResetPasswordResponseType>; type: 'reset-password'; };
+    | { setError: UseFormSetError<RegisterFormData>; onAuthFunc: (data: RegisterFormData) => Promise<onAuthResponse>; type: 'register'; }
+    | { setError: UseFormSetError<LoginFormData>; onAuthFunc: (data: LoginFormData) => Promise<onUserResponse>; type: 'login'; }
+    | { setError: UseFormSetError<ForgotPasswordFormData>; onAuthFunc: (data: ForgotPasswordFormData) => Promise<onAuthResponse>; type: 'forgot-password'; }
+    | { setError: UseFormSetError<ResetPasswordFormData>; onAuthFunc: (data: ResetPasswordFormData) => Promise<onAuthResponse>; type: 'reset-password'; };
 
 export default function useSubmitForm(props: UseSubmitFormProps) {
     const { setError, onAuthFunc, type } = props;
     const toast = useToast();
     const navigate = useNavigate();
     const { mutate, isPending } = useMutation({
-        mutationFn: onAuthFunc as (data: RegisterFormData | LoginFormData | ForgotPasswordFormData | ResetPasswordFormData) => Promise<onRegisterResponseType | onLoginResponseType | onForgotPasswordResponseType | onResetPasswordResponseType>,
+        mutationFn: onAuthFunc as (data: RegisterFormData | LoginFormData | ForgotPasswordFormData | ResetPasswordFormData) => Promise<onAuthResponse | onUserResponse>,
     });
 
     const { handleSetUser } = useContext(UserContext) || {};
@@ -45,13 +45,13 @@ export default function useSubmitForm(props: UseSubmitFormProps) {
                         });
                     }
                     if (type === "login") {
-                        handleSetUser((data as onLoginResponseType).user);
+                        handleSetUser((data as onUserResponse).user!);
                         navigate("/quizlisting");
                     }
                     if (type === "forgot-password") {
                         toast('success', {
                             header: 'Verification Successful',
-                            message: (data as onForgotPasswordResponseType).status,
+                            message: (data as onAuthResponse).status,
                         });
                     }
                     if (type === "reset-password") {
