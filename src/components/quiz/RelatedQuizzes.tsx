@@ -1,4 +1,4 @@
-import { QuizCard } from "@/components/quizListing";
+import { QuizCard } from "@/components";
 import type { Quiz } from "@/types";
 
 export default function RelatedQuizzes({ relatedQuizzes }: { relatedQuizzes: Quiz[] }) {
